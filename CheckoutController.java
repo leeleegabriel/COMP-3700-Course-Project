@@ -10,6 +10,7 @@ public class CheckoutController implements ActionListener {
     private DataAdapter dataAdapter; // to save and load product
     private Order order = null;
     private double TaxRate = 1.08;
+    private int count = 0;
    
 
     public CheckoutController(CheckoutScreen view, PaymentScreen payment, DataAdapter dataAdapter) {
@@ -30,6 +31,7 @@ public class CheckoutController implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == view.getBtnAdd()){
+            //createOrder();
             addProduct();
         }
         else if (e.getSource() == view.getBtnPay() && order.getLines().size() > 0){
@@ -53,6 +55,7 @@ public class CheckoutController implements ActionListener {
     private void reset() {
          payment.setVisible(false);
          view.setVisible(false);
+         order = new Order();
          this.view.getLabTotal().setText("Total: " + 0.0);
          view.resetTable();
     }

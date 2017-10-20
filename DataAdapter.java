@@ -104,8 +104,9 @@ public class DataAdapter {
 
     public boolean saveOrder(Order order) {
         try {
+            int OrderID = getRow();
             PreparedStatement statement = connection.prepareStatement("INSERT INTO \"Order\" VALUES (?, ?, ?, ?, ?)");
-            statement.setInt(1, getRow());
+            statement.setInt(1, OrderID);
             statement.setDate(2, order.getDate());
             statement.setString(3, order.getCustomerName());
             statement.setDouble(4, order.getTotalCost());
@@ -116,7 +117,7 @@ public class DataAdapter {
 
             statement = connection.prepareStatement("INSERT INTO OrderLine VALUES (?, ?, ?, ?)");
             for (OrderLine line: order.getLines()) { // store for each order line!
-                statement.setInt(1, line.getOrderID());
+                statement.setInt(1, OrderID);
                 statement.setInt(2, line.getProductID());
                 statement.setDouble(3, line.getQuantity());
                 statement.setDouble(4, line.getCost());
