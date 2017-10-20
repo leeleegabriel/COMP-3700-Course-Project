@@ -13,8 +13,8 @@ public class MainScreen extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(400, 300);
 
-        btnManage.setPreferredSize(new Dimension(120, 50));
-        btnCheckout.setPreferredSize(new Dimension(120, 50));
+        btnManage.setPreferredSize(new Dimension(150, 50));
+        btnCheckout.setPreferredSize(new Dimension(150, 50));
 
 
         JLabel title = new JLabel("Store Management System");

@@ -104,8 +104,9 @@ public class DataAdapter {
 
     public boolean saveOrder(Order order) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO Order VALUES (?, ?, ?, ?, ?)");
-            statement.setInt(1, order.getOrderID());
+            int OrderID = getRow();
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO \"Order\" VALUES (?, ?, ?, ?, ?)");
+            statement.setInt(1, OrderID);
             statement.setDate(2, order.getDate());
             statement.setString(3, order.getCustomerName());
             statement.setDouble(4, order.getTotalCost());
@@ -116,7 +117,7 @@ public class DataAdapter {
 
             statement = connection.prepareStatement("INSERT INTO OrderLine VALUES (?, ?, ?, ?)");
             for (OrderLine line: order.getLines()) { // store for each order line!
-                statement.setInt(1, line.getOrderID());
+                statement.setInt(1, OrderID);
                 statement.setInt(2, line.getProductID());
                 statement.setDouble(3, line.getQuantity());
                 statement.setDouble(4, line.getCost());
@@ -130,6 +131,26 @@ public class DataAdapter {
             System.out.println("Database access error!");
             e.printStackTrace();
             return false;
+        }
+    }
+    
+    
+    public int getRow() {
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT COUNT(ORDERID) FROM \"Order\"");
+            int row = resultSet.getInt("Count(ORDERID)");
+            resultSet.close();
+            statement.close();
+            //PreparedStatement statement = connection.prepareStatement("SELECT COUNT FROM \"Order\"");
+            //statement.execute();    // commit to the database;
+            //statement.close();    
+            return row; // save successfully!
+        }
+        catch (SQLException e) {
+            System.out.println("Database access error!");
+            e.printStackTrace();
+            return -1;
         }
     }
 }

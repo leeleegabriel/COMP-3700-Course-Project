@@ -6,6 +6,7 @@ public class CheckoutScreen extends JFrame {
 
     private JButton btnAdd = new JButton("Add a new item");
     private JButton btnPay = new JButton("Finish and Pay");
+    private JTextField txtCustomerName  = new JTextField(30);
 
     private DefaultTableModel items = new DefaultTableModel(); // store information for the table!
 
@@ -16,7 +17,7 @@ public class CheckoutScreen extends JFrame {
 
         this.setTitle("Checkout");
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-        this.setSize(400, 600);
+        this.setSize(500, 700);
 
 
         items.addColumn("Product ID");
@@ -34,6 +35,12 @@ public class CheckoutScreen extends JFrame {
         panelOrder.add(labTotal);
         tblItems.setFillsViewportHeight(true);
         this.getContentPane().add(panelOrder);
+        
+        JPanel panelCustomerName = new JPanel();
+        panelCustomerName .add(new JLabel("Customer Name: "));
+        panelCustomerName .add(txtCustomerName);
+        txtCustomerName .setHorizontalAlignment(JTextField.RIGHT);
+        this.getContentPane().add(panelCustomerName );
 
         JPanel panelButton = new JPanel();
         panelButton.setPreferredSize(new Dimension(400, 100));
@@ -50,6 +57,10 @@ public class CheckoutScreen extends JFrame {
     public JButton getBtnPay() {
         return btnPay;
     }
+    
+    public JTextField getTxtCustomerName() {
+        return txtCustomerName;
+    }
 
     public JLabel getLabTotal() {
         return labTotal;
@@ -59,4 +70,10 @@ public class CheckoutScreen extends JFrame {
         items.addRow(row);              // add a row to list of item!
         items.fireTableDataChanged();
     }
+    
+    public void resetTable() {
+        items.setRowCount(0);
+    }
+    
+    
 }

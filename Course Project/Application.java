@@ -25,6 +25,8 @@ public class Application {
     private ProductView productView = new ProductView();
 
     private CheckoutScreen checkoutScreen = new CheckoutScreen();
+    
+    private PaymentScreen paymentScreen = new PaymentScreen();
 
     private MainScreen mainScreen = new MainScreen();
 
@@ -39,7 +41,11 @@ public class Application {
     public CheckoutScreen getCheckoutScreen() {
         return checkoutScreen;
     }
-
+    
+    public PaymentScreen getPaymentScreen() {
+         return paymentScreen;
+    }
+    
     private ProductController productController;
 
     public ProductController getProductController() {
@@ -56,13 +62,16 @@ public class Application {
         return dataAdapter;
     }
 
-    private void initializeDatabase(Statement stmt) throws SQLException {
+    private void initializeProductDB(Statement stmt) throws SQLException {
         // create the tables and insert sample data here!
-
         stmt.execute("create table Product (ProductID int PRIMARY KEY, ProductName char(30), Price double, Quantity double)");
         //    stmt.execute("create table Order (ProductID int PRIMARY KEY, ProductName char(30), Price double, Quantity double)");
+    }
 
-
+    private void initializeOrderDB(Statement stmt) throws SQLException {
+        // create the tables and insert sample data here!
+        stmt.execute("create table \"Order\" (OrderID int PRIMARY KEY, OrderDate date, Customer char(30), TotalCost double, TotalTax double)");
+        //    stmt.execute("create table Order (ProductID int PRIMARY KEY, ProductName char(30), Price double, Quantity double)");
     }
 
     private Application() {
@@ -72,7 +81,9 @@ public class Application {
             connection = DriverManager.getConnection("jdbc:sqlite:store.db");
             Statement stmt = connection.createStatement();
             if (!stmt.executeQuery("select * from product").next()) // product table do not exist
-                initializeDatabase(stmt);
+                initializeProductDB(stmt);
+               
+
 
 
         }
@@ -83,7 +94,6 @@ public class Application {
 
         catch (SQLException ex) {
             System.out.println("SQLite database is not ready. System exits with error!" + ex.getMessage());
-
             System.exit(2);
         }
 
@@ -92,7 +102,7 @@ public class Application {
 
         productController = new ProductController(productView, dataAdapter);
 
-        checkoutController = new CheckoutController(checkoutScreen, dataAdapter);
+        checkoutController = new CheckoutController(checkoutScreen, paymentScreen, dataAdapter);
     }
 
 
