@@ -17,7 +17,7 @@ public class MainScreen extends JFrame {
    public MainScreen() {
       this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      this.setSize(500, 400);
+      this.setSize(900, 400);
    
       btnManage.setPreferredSize(new Dimension(150, 50));
       btnCheckout.setPreferredSize(new Dimension(150, 50));

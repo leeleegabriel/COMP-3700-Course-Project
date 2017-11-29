@@ -9,6 +9,8 @@ public class ManagerScreen extends JFrame {
    private JButton btnCheckout = new JButton("Checkout");
    private JButton btnManage   = new JButton("Manage Product");
    private JButton btnProfile = new JButton("Manage Profile");
+   private JButton btnUsers = new JButton("Manage Users");
+   private JButton btnReport = new JButton("Business Report");
    private User user;
    private JLabel img_label;
    private JPanel img_panel;
@@ -17,11 +19,13 @@ public class ManagerScreen extends JFrame {
    public ManagerScreen() {
       this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      this.setSize(500, 400);
+      this.setSize(900, 400);
    
       btnManage.setPreferredSize(new Dimension(150, 50));
+      btnUsers.setPreferredSize(new Dimension(150, 50));
       btnCheckout.setPreferredSize(new Dimension(150, 50));
       btnProfile.setPreferredSize(new Dimension(150, 50));
+      btnReport.setPreferredSize(new Dimension(150, 50));
    
       JLabel title = new JLabel("Store Management System: Manager Screen");
       title.setFont(new Font("Sans Serif", Font.BOLD, 24));
@@ -32,7 +36,10 @@ public class ManagerScreen extends JFrame {
       JPanel panelButton = new JPanel();
       panelButton.add(btnCheckout);
       panelButton.add(btnManage);
+      panelButton.add(btnUsers);
       panelButton.add(btnProfile);
+      panelButton.add(btnReport);
+
       this.getContentPane().add(panelButton);
    
       btnCheckout.addActionListener(
@@ -48,11 +55,24 @@ public class ManagerScreen extends JFrame {
                Application.getInstance().getProductView().setVisible(true);
             }
          });
+         
+      btnUsers.addActionListener(
+         new ActionListener() { // when controller is simple, we can declare it on the fly
+            public void actionPerformed(ActionEvent e) {
+               Application.getInstance().getUserView().setVisible(true);
+            }
+         });   
        
       btnProfile.addActionListener(
          new ActionListener() { // when controller is simple, we can declare it on the fly
             public void actionPerformed(ActionEvent e) {
                Application.getInstance().getProfileScreen().setVisible(true);
+            }
+         });
+      btnReport.addActionListener(
+         new ActionListener() { // when controller is simple, we can declare it on the fly
+            public void actionPerformed(ActionEvent e) {
+               Application.getInstance().getReportScreen().setVisible(true);
             }
          });
    }

@@ -40,6 +40,63 @@ public class DataAdapter {
       }
    }
 
+   public User loadUser(String name) {
+      try {
+         String query = "SELECT * FROM User WHERE Name = " + name;
+      
+         Statement statement = connection.createStatement();
+         ResultSet resultSet = statement.executeQuery(query);
+         if (resultSet.next()) {
+            User user = new User();
+            user.setName(resultSet.getString(1));
+            user.setPass(resultSet.getString(2));
+            user.setJob(resultSet.getString(3));
+            resultSet.close();
+            statement.close();
+         
+            return user;
+         }
+      
+      } 
+      catch (SQLException e) {
+         System.out.println("Database access error!");
+         e.printStackTrace();
+      }
+      return null;
+   }
+   
+   public boolean saveUser(User user) {
+      try {
+         PreparedStatement statement = connection.prepareStatement("SELECT * FROM User WHERE Name = ?");
+         statement.setString(1, user.getName());
+      
+         ResultSet resultSet = statement.executeQuery();
+      
+         if (resultSet.next()) { // this user exists, update its fields
+            statement = connection.prepareStatement("UPDATE User SET Password = ?, Job = ? WHERE Name = ?");
+            statement.setString(1, user.getPass());
+            statement.setString(2, user.getJob());
+            statement.setString(3, user.getName());
+
+         }
+         else { // this user does not exist, use insert into
+            statement = connection.prepareStatement("INSERT INTO User VALUES (?, ?, ?)");
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getPass());
+            statement.setString(3, user.getJob());
+         }
+         statement.execute();
+         resultSet.close();
+         statement.close();
+         return true;        // save successfully
+         }
+               catch (SQLException e) {
+         System.out.println("Database access error!");
+         e.printStackTrace();
+         return false; // cannot save!
+      }
+   } 
+      
    public Product loadProduct(int id) {
       try {
          String query = "SELECT * FROM Product WHERE ProductID = " + id;
@@ -65,6 +122,8 @@ public class DataAdapter {
       }
       return null;
    }
+   
+   
 
    public boolean saveProduct(Product product) {
       try {
@@ -189,4 +248,5 @@ public class DataAdapter {
          return -1;
       }
    }
+   
 }

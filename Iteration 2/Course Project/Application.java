@@ -33,8 +33,16 @@ public class Application {
    private PaymentScreen paymentScreen = new PaymentScreen();
 
    private ProductView productView = new ProductView();
+
+   private UserView userView = new UserView();
+   
+   private ReportScreen reportScreen = new ReportScreen();
   
    private ProductController productController;
+   
+   private UserController userController;
+   
+   private ReportController reportController;
       
    private CheckoutController checkoutController;
    
@@ -68,6 +76,14 @@ public class Application {
       return productView;
    }
 
+   public UserView getUserView() {
+      return userView;
+   }
+   
+   public ReportScreen getReportScreen() {
+      return reportScreen;
+   }
+
    public CheckoutScreen getCheckoutScreen() {
       return checkoutScreen;
    }
@@ -82,6 +98,14 @@ public class Application {
 
    public ProductController getProductController() {
       return productController;
+   }
+
+   public UserController getUserController() {
+      return userController;
+   }
+   
+   public ReportController getReportController() {
+      return reportController;
    }
 
    public CheckoutController getCheckoutController() {
@@ -145,7 +169,11 @@ public class Application {
       
       loginController = new LoginController(loginScreen, dataAdapter);
       
+      //reportController = new ReportController(reportScreen, paymentScreen, dataAdapter);
+      
       passwordController = new PasswordController(passwordScreen, dataAdapter);
+      
+      userController = new UserController(userView, dataAdapter);
    }
 
 
