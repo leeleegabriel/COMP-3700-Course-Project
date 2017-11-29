@@ -169,7 +169,7 @@ public class Application {
       
       loginController = new LoginController(loginScreen, dataAdapter);
       
-      //reportController = new ReportController(reportScreen, paymentScreen, dataAdapter);
+      reportController = new ReportController(reportScreen, paymentScreen, dataAdapter);
       
       passwordController = new PasswordController(passwordScreen, dataAdapter);
       

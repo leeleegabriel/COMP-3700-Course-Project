@@ -21,16 +21,18 @@ public class ReportController implements ActionListener {
       this.view = view;
       this.payment = payment;
    
+      view.getBtnGenerate().addActionListener(this);
+   
       order = new Order();
       
-      generateReport();
    }
 
 
    public void actionPerformed(ActionEvent e) {
-//    if (e.getSource() == productView.getBtnGenerate())
-//             generateReport();
-//    }
+    if (e.getSource() == view.getBtnGenerate()) {
+             generateReport();
+             System.out.println("TEST");
+    }
 
    }
 
@@ -80,7 +82,6 @@ public class ReportController implements ActionListener {
             row[0] = Integer.toString(l);
             row[1] = Integer.toString(quantities[l]);
             row[2] = Double.toString(costs[l]);
-            System.out.println("TEST");
             this.view.addRow(row);
          }
       }

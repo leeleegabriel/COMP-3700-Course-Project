@@ -163,8 +163,9 @@ public class DataAdapter {
       try {
          Order order = null;
          Statement statement = connection.createStatement();
-         ResultSet resultSet = statement.executeQuery("SELECT * FROM Order WHERE OrderID = " + id);
-      
+         ResultSet resultSet = statement.executeQuery("SELECT * FROM \"Order\" WHERE OrderID = " + id);
+         
+         
          if (resultSet.next()) {
             order = new Order();
             order.setOrderID(resultSet.getInt("OrderID"));
