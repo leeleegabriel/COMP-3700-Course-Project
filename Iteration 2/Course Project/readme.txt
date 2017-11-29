@@ -8,3 +8,10 @@ We used the IDE jGRASP to develop this project.
 -  add store.db and sqlite-jdbc-3.16.1.jar inside Course Project to the new project also
 -  compile in jGRASP
 -  run from jGRASP
+
+Can view user information in store.db
+
+Current accounts
+user:pass
+
+Admin:Admin
