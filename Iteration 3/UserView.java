@@ -6,7 +6,7 @@ public class UserView extends JFrame{
     private JTextField txtUserPass  = new JTextField(30);
 
 
-    private JButton btnLoad = new JButton("Load User");
+    //private JButton btnLoad = new JButton("Load User");
     private JButton btnSave = new JButton("Save User");
 
     public UserView() {
@@ -15,7 +15,7 @@ public class UserView extends JFrame{
         this.setSize(500, 200);
 
         JPanel panelButton = new JPanel();
-        panelButton.add(btnLoad);
+        //panelButton.add(btnLoad);
         panelButton.add(btnSave);
         this.getContentPane().add(panelButton);
 
@@ -35,10 +35,12 @@ public class UserView extends JFrame{
         this.getContentPane().add(panelUserJob);
 
     }
-
+   
+   /**
     public JButton getBtnLoad() {
         return btnLoad;
     }
+    */
 
     public JButton getBtnSave() {
         return btnSave;

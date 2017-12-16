@@ -38,5 +38,9 @@ public class User {
    public String getJob() {
       return Job;
    }
+   
+   public boolean isManager() {
+      return Job.equals("Manager");
+   }
 
 }

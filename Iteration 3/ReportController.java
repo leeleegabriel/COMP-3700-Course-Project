@@ -31,7 +31,6 @@ public class ReportController implements ActionListener {
    public void actionPerformed(ActionEvent e) {
     if (e.getSource() == view.getBtnGenerate()) {
              generateReport();
-             System.out.println("TEST");
     }
 
    }

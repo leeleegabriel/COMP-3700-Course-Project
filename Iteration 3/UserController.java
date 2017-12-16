@@ -10,15 +10,17 @@ public class UserController implements ActionListener {
         this.dataAdapter = dataAdapter;
         this.userView = userView;
 
-        userView.getBtnLoad().addActionListener(this);
+        //userView.getBtnLoad().addActionListener(this);
         userView.getBtnSave().addActionListener(this);
     }
 
 
     public void actionPerformed(ActionEvent e) {
+         /*
         if (e.getSource() == userView.getBtnLoad())
             loadUser();
-        else
+            System.out.println("User can't be loaded");
+        */
         if (e.getSource() == userView.getBtnSave())
             saveUser();
     }
@@ -58,7 +60,7 @@ public class UserController implements ActionListener {
 
         dataAdapter.saveUser(user);
     }
-
+      /*
     private void loadUser() {
         String name = "";
         try {
@@ -81,6 +83,7 @@ public class UserController implements ActionListener {
         userView.getTxtUserName().setText(user.getPass());
         userView.getTxtUserName().setText(user.getJob());
     }
+    */
 
 
 }

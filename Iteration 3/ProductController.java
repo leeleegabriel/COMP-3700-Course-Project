@@ -11,7 +11,7 @@ public class ProductController implements ActionListener {
         this.productView = productView;
 
         // productView.getBtnLoad().addActionListener(this);
-//         productView.getBtnSave().addActionListener(this);
+         //productView.getBtnSave().addActionListener(this);
     }
 
 

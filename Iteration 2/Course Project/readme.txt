@@ -1,7 +1,7 @@
 readme
 Compilation Instructions
 
-Walk throughs included in the System testing pdf Inside of COMP-3700-Course-Project/Iteration 2/
+Walk throughs included in the System testing pdf Inside of COMP-3700-Course-Project/Iteration 3/
 
 We used the IDE jGRASP to develop this project.
 

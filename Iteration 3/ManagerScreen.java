@@ -19,7 +19,7 @@ public class ManagerScreen extends JFrame {
    public ManagerScreen() {
       this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      this.setSize(900, 400);
+      this.setSize(900, 900);
    
       btnManage.setPreferredSize(new Dimension(150, 50));
       btnUsers.setPreferredSize(new Dimension(150, 50));
