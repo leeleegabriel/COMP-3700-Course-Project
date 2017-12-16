@@ -1,47 +1,42 @@
 public class User {
-    private int userID;
-    private String userName;
-    private String password;
-    private String displayName;
-    private boolean isManager;
+   private String Name;
+   private String Pass;
+   private String Job;
 
-    public int getUserID() {
-        return userID;
-    }
+   public void User(String Name_in, String Pass_in, String Job_in) {
+      Name = Name_in;
+      Pass = Pass_in;
+      Job = Job_in;
+   }
+   
+   public void User() {
+      Name = "";
+      Pass = "";
+      Job = "";
+   }
+   
+   public String getName() {
+      return Name;
+   }
+   
+   public void setName(String Name_in) {
+      Name = Name_in;
+   }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
+   public String getPass() {
+      return Pass;
+   }
+   
+   public void setPass(String Pass_in) {
+      Pass = Pass_in;
+   }
+   
+   public void setJob(String Job_in) {
+      Job = Job_in;
+   }
 
-    public String getUserName() {
-        return userName;
-    }
+   public String getJob() {
+      return Job;
+   }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean isManager() {
-        return isManager;
-    }
-
-    public void setManager(boolean manager) {
-        isManager = manager;
-    }
 }

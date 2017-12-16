@@ -9,6 +9,7 @@ public class PriceClient {
 
         System.out.println("Attemping to connect to host " + serverHostname + " on port " + portNumber);
 
+
         Socket socket = new Socket(serverHostname, portNumber);
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));

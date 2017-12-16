@@ -2,29 +2,25 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class CheckoutScreen extends JFrame {
-
-   private JButton btnAdd = new JButton("Add a new item");
-   private JButton btnPay = new JButton("Finish and Pay");
-   private JTextField txtCustomerName  = new JTextField(30);
+public class ReportScreen extends JFrame {
 
    private DefaultTableModel items = new DefaultTableModel(); // store information for the table!
 
-   private JTable tblItems = new JTable(items); // null, new String[]{"ProductID", "Product Name", "Price", "Quantity", "Cost"});
-   private JLabel labTotal = new JLabel("Total: ");
+   private JButton btnGenerate = new JButton("Generate Report");
 
-   public CheckoutScreen() {
+   private JTable tblItems = new JTable(items);
+   private JLabel labTotal = new JLabel("Total Revenue: ");
+
+   public ReportScreen() {
    
-      this.setTitle("Checkout");
+      this.setTitle("Business Report");
       this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
       this.setSize(500, 700);
    
    
       items.addColumn("Product ID");
-      items.addColumn("Name");
-      items.addColumn("Price");
-      items.addColumn("Quantity");
-      items.addColumn("Cost");
+      items.addColumn("Quantity Sold");
+      items.addColumn("Total");
    
       JPanel panelOrder = new JPanel();
       panelOrder.setPreferredSize(new Dimension(400, 450));
@@ -36,31 +32,18 @@ public class CheckoutScreen extends JFrame {
       tblItems.setFillsViewportHeight(true);
       this.getContentPane().add(panelOrder);
       
-      JPanel panelCustomerName = new JPanel();
-      panelCustomerName .add(new JLabel("Customer Name: "));
-      panelCustomerName .add(txtCustomerName);
-      txtCustomerName .setHorizontalAlignment(JTextField.RIGHT);
-      this.getContentPane().add(panelCustomerName );
    
       JPanel panelButton = new JPanel();
       panelButton.setPreferredSize(new Dimension(400, 100));
-      panelButton.add(btnAdd);
-      panelButton.add(btnPay);
+      panelButton.add(btnGenerate);
       this.getContentPane().add(panelButton);
    
    }
 
-   public JButton getBtnAdd() {
-      return btnAdd;
+   public JButton getBtnGenerate() {
+      return btnGenerate;
    }
 
-   public JButton getBtnPay() {
-      return btnPay;
-   }
-   
-   public JTextField getTxtCustomerName() {
-      return txtCustomerName;
-   }
 
    public JLabel getLabTotal() {
       return labTotal;

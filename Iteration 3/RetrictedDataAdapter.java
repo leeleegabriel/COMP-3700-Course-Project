@@ -15,11 +15,11 @@ public class RetrictedDataAdapter implements IDataAccess {
 
     @Override
     public boolean saveProduct(Product product) {
-        if (user.isManager())
+        //if (user.isManager())
             return dataAccess.saveProduct(product);
-        else
-            JOptionPane.showMessageDialog(null, "This user has no right to save a product!");
-        return false;
+      //   else
+//             JOptionPane.showMessageDialog(null, "This user has no right to save a product!");
+//         return false;
     }
 
 
