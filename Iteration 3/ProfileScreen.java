@@ -80,7 +80,6 @@ public class ProfileScreen extends JFrame {
          });
    }
    
-   //TODO MAKE THIS SHIT WORK
    private JLabel img_label = new JLabel();
    public void setImage(User user) {
       String file_name = "image/" + user.getName() + ".png";

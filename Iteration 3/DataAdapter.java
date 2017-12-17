@@ -26,10 +26,45 @@ public class DataAdapter implements IDataAccess {
       }
       return null;
    }
+   
+   public User getUser(String username) {
+      try {
+         String query = "SELECT * FROM User WHERE Name = \"" + username + "\"";
+         Statement statement = connection.createStatement();
+         ResultSet resultSet = statement.executeQuery(query);
+         if (resultSet.next()) {
+            User user = new User();
+            user.setName(resultSet.getString(1));
+            user.setPass(resultSet.getString(2));
+            user.setJob(resultSet.getString(3));
+            return user;
+         }
+      } 
+      catch (SQLException e) {
+         System.out.println("Database access error!");
+         e.printStackTrace();
+      }
+      return null;
+   }
+   
+   
 
    public void UpdateUser(String newpass, User user) {
       try {
          String query = "UPDATE User SET Password = \"" + newpass + "\" WHERE Password = \"" + user.getPass() + "\" AND Name = \"" + user.getName() + "\";";
+         Statement statement = connection.createStatement();
+         statement.executeUpdate(query);
+         Application.getInstance().SetUser(user);
+      }
+      catch (SQLException e) {
+         System.out.println("Database access error!");
+         e.printStackTrace();
+      }
+   }
+   
+   public void UpdateUser(User user) {
+      try {
+         String query = "UPDATE User SET Password = \"" + user.getPass() + "\" Name = \"" + user.getName() + "\";";
          Statement statement = connection.createStatement();
          statement.executeUpdate(query);
          Application.getInstance().SetUser(user);
@@ -194,11 +229,37 @@ public class DataAdapter implements IDataAccess {
       }
       return null;
    }
-
-    //@Override
    public boolean saveUser(User user) {
-      return false;
-   }
+      try {
+         PreparedStatement statement = connection.prepareStatement("SELECT * FROM User WHERE Name = ?");
+         statement.setString(1, user.getName());
+      
+         ResultSet resultSet = statement.executeQuery();
+      
+         if (resultSet.next()) { // this user exists, update its fields
+            statement = connection.prepareStatement("UPDATE User SET Password = ?, Job = ? WHERE Name = ?");
+            statement.setString(1, user.getPass());
+            statement.setString(2, user.getJob());
+            statement.setString(3, user.getName());
+         
+         }
+         else { // this user does not exist, use insert into
+            statement = connection.prepareStatement("INSERT INTO User VALUES (?, ?, ?)");
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getPass());
+            statement.setString(3, user.getJob());
+         }
+         statement.execute();
+         resultSet.close();
+         statement.close();
+         return true;        // save successfully
+      }
+      catch (SQLException e) {
+         System.out.println("Database access error!");
+         e.printStackTrace();
+         return false; // cannot save!
+      }
+   } 
    
    public int getRow() {
       try {

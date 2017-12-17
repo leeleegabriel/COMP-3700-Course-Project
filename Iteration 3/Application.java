@@ -2,6 +2,9 @@ import java.sql.*;
 
 public class Application {
 
+   private String hostName = "127.0.0.1";
+   private int portNumber = 8888;
+      
    private static Application instance;   // Singleton pattern
 
    public static Application getInstance() {
@@ -50,7 +53,7 @@ public class Application {
    
    private PasswordController passwordController;
    
-   private DataAdapter dataAdapter;
+   private ProxyDataAdapter dataAdapter;
            
    public LoginScreen getLoginScreen() {
       return loginScreen;
@@ -112,7 +115,7 @@ public class Application {
       return checkoutController;
    }
 
-   public DataAdapter getDataAdapter() {
+   public ProxyDataAdapter getDataAdapter() {
       return dataAdapter;
    }
    
@@ -144,6 +147,7 @@ public class Application {
    }
 
    private Application() {
+      /*
       try {
          Class.forName("org.sqlite.JDBC");
          connection = DriverManager.getConnection("jdbc:sqlite:store.db");
@@ -160,6 +164,7 @@ public class Application {
          System.out.println("SQLite database is not ready. System exits with error!" + ex.getMessage());
          System.exit(2);
       }
+      */
       try {
          productView = new ProductView();
 
@@ -169,7 +174,7 @@ public class Application {
       
       }
    
-      dataAdapter = new DataAdapter(connection);
+      dataAdapter = new ProxyDataAdapter(hostName, portNumber);
    
       //productController = new ProductController(productView, dataAdapter);
    

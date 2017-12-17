@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 public class LoginController implements ActionListener {
    private LoginScreen loginScreen;
-   private DataAdapter dataAdapter;
+   private ProxyDataAdapter dataAdapter;
 
-   public LoginController(LoginScreen loginScreen, DataAdapter dataAdapter) {
+   public LoginController(LoginScreen loginScreen, ProxyDataAdapter dataAdapter) {
       this.loginScreen = loginScreen;
       this.dataAdapter = dataAdapter;
       this.loginScreen.getBtnLogin().addActionListener(this);

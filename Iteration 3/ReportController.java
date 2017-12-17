@@ -10,13 +10,13 @@ import java.util.List;
 public class ReportController implements ActionListener {
    private ReportScreen view;
    private PaymentScreen payment;
-   private DataAdapter dataAdapter; // to save and load product
+   private ProxyDataAdapter dataAdapter; // to save and load product
    private Order order = null;
    private double TaxRate = 1.08;
    private int count = 0;
   
 
-   public ReportController(ReportScreen view, PaymentScreen payment, DataAdapter dataAdapter) {
+   public ReportController(ReportScreen view, PaymentScreen payment, ProxyDataAdapter dataAdapter) {
       this.dataAdapter = dataAdapter;
       this.view = view;
       this.payment = payment;

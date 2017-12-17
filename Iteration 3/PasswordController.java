@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 public class PasswordController implements ActionListener {
    private PasswordScreen passwordScreen;
-   private DataAdapter dataAdapter;
+   private ProxyDataAdapter dataAdapter;
 
-   public PasswordController(PasswordScreen passwordScreen, DataAdapter dataAdapter) {
+   public PasswordController(PasswordScreen passwordScreen, ProxyDataAdapter dataAdapter) {
       this.passwordScreen = passwordScreen;
       this.dataAdapter = dataAdapter;
       this.passwordScreen.getBtnSave().addActionListener(this);

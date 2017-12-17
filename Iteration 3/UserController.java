@@ -4,9 +4,9 @@ import java.awt.event.ActionListener;
 
 public class UserController implements ActionListener {
     private UserView userView;
-    private DataAdapter dataAdapter; // to save and load user information
+    private ProxyDataAdapter dataAdapter; // to save and load user information
 
-    public UserController(UserView userView, DataAdapter dataAdapter) {
+    public UserController(UserView userView, ProxyDataAdapter dataAdapter) {
         this.dataAdapter = dataAdapter;
         this.userView = userView;
 

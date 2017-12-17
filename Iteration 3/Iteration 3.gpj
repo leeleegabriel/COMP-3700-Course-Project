@@ -78,5 +78,5 @@ s#l0
 %\011ProductController.java
 %\011ReportController.java
 %\011ReportScreen.java
-!39;m
-RunSelect	APPLICATION:ProxyProductView
+!34;m
+RunSelect	APPLICATION:Application
