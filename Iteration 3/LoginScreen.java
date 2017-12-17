@@ -1,5 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.net.Socket;
 
 public class LoginScreen extends JFrame {
    private JTextField Name = new JTextField(30);
@@ -22,6 +25,15 @@ public class LoginScreen extends JFrame {
       this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       this.setSize(400, 300);
+      
+      
+      this.addWindowListener(new WindowAdapter() {
+         public void windowClosing(WindowEvent evt) {
+            System.out.println("Closing Connection");
+            Application.getInstance().getDataAdapter().close();
+            System.out.println("Exiting");
+         }
+      });
    
       JLabel title = new JLabel("Store Management System");
       title.setFont(new Font("Sans Serif", Font.BOLD, 24));

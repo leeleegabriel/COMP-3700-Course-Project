@@ -74,4 +74,8 @@ public class ProxyDataAdapter implements IDataAccess {
       return getRemoteDataAdapter().getUser(username);
    }
    
+   public void close() {
+      getRemoteDataAdapter().close();
+   }
+   
 }
