@@ -134,7 +134,8 @@ public class RemoteDataAdapter implements IDataAccess {
          ClientRequest request = new ClientRequest("GET User", gson.toJson(username));
          outStream.println(gson.toJson(request));
          String serverAnswer = inStream.readLine();
-         return gson.fromJson(serverAnswer, User.class);
+         User user = gson.fromJson(serverAnswer, User.class);
+         return user;
       } catch (Exception ex) {
          ex.printStackTrace();
       }

@@ -17,8 +17,13 @@ public class DataAdapter implements IDataAccess {
             user.setName(resultSet.getString(1));
             user.setPass(resultSet.getString(2));
             user.setJob(resultSet.getString(3));
+            statement.close();
+            resultSet.close();
+            
             return user;
          }
+         statement.close();
+         resultSet.close();
       } 
       catch (SQLException e) {
          System.out.println("Database access error!");
@@ -37,8 +42,12 @@ public class DataAdapter implements IDataAccess {
             user.setName(resultSet.getString(1));
             user.setPass(resultSet.getString(2));
             user.setJob(resultSet.getString(3));
+            statement.close();
+            resultSet.close();
             return user;
          }
+         statement.close();
+         resultSet.close();
       } 
       catch (SQLException e) {
          System.out.println("Database access error!");
@@ -55,6 +64,7 @@ public class DataAdapter implements IDataAccess {
          Statement statement = connection.createStatement();
          statement.executeUpdate(query);
          Application.getInstance().SetUser(user);
+         statement.close();
       }
       catch (SQLException e) {
          System.out.println("Database access error!");
@@ -68,6 +78,7 @@ public class DataAdapter implements IDataAccess {
          Statement statement = connection.createStatement();
          statement.executeUpdate(query);
          Application.getInstance().SetUser(user);
+         statement.close();
       }
       catch (SQLException e) {
          System.out.println("Database access error!");
@@ -93,6 +104,8 @@ public class DataAdapter implements IDataAccess {
          
             return product;
          }
+         resultSet.close();
+         statement.close();
       
       } catch (SQLException e) {
          System.out.println("Database access error!");

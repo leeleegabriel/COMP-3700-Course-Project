@@ -28,7 +28,6 @@ public class ProductView extends JFrame {
       this.setTitle("Product View");
       this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
       this.setSize(500, 200);
-      this.setDefaultCloseOperation(EXIT_ON_CLOSE);
    
       JPanel panelButton = new JPanel();
       panelButton.add(btnLoad);

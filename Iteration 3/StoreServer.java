@@ -80,9 +80,10 @@ public class StoreServer extends Thread {
          
             if (request.getCommand().equals("BYE")) 
                break;
-         
+            System.out.println(request);
             String response = gson.toJson(processRequest(request));             // process the request...
             out.println(response); // write response as JSON back to client
+            System.out.println(response);
          }
          System.out.println("Connection closed for client from " + clientSocket.getInetAddress());
          out.close();

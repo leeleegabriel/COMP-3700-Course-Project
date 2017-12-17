@@ -39,12 +39,9 @@ public class ProxyDataAdapter implements IDataAccess {
 
    public Product loadProduct(int id) {
       Product product;
-      product = getLocalDataAdapter().loadProduct(id);
-      if (product == null) {
-         product = getRemoteDataAdapter().loadProduct(id);
-         if (product != null)
-            localDataAdapter.saveProduct(product);
-      }
+      product = getRemoteDataAdapter().loadProduct(id);
+      if (product != null)
+         getRemoteDataAdapter().saveProduct(product);
       return product;
    }
 
@@ -54,27 +51,27 @@ public class ProxyDataAdapter implements IDataAccess {
    
    public boolean UpdateUser(String newpass, User user) {
       user.setPass(newpass);
-      return remoteDataAdapter.UpdateUser(user);
+      return getRemoteDataAdapter().UpdateUser(user);
    }
    
    public boolean saveUser(User user) {
-      return remoteDataAdapter.saveUser(user);
+      return getRemoteDataAdapter().saveUser(user);
    }
    
    public int getRow() {
-      return remoteDataAdapter.getRow();
+      return getRemoteDataAdapter().getRow();
    }
    
    public Order loadOrder(int id) {
-      return remoteDataAdapter.loadOrder(id);
+      return getRemoteDataAdapter().loadOrder(id);
    }
    
    public boolean saveOrder(Order order) {
-      return remoteDataAdapter.saveOrder(order);
+      return getRemoteDataAdapter().saveOrder(order);
    }
    
    public User getUser(String username, String password) {
-      return remoteDataAdapter.getUser(username);
+      return getRemoteDataAdapter().getUser(username);
    }
    
 }
